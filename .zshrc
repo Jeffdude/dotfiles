@@ -13,9 +13,12 @@ compinit
 # End of lines added by compinstall
 
 autoload -U promptinit
+autoload -U colors && colors
 promptinit
-prompt redhat
-
+#prompt redhat
+PROMPT="%{$fg_bold[cyan]%}» %{$reset_color%}%b%{$fg[blue]%}%~ %{$reset_color%}
+[%n@%M]$ "
+RPROMPT=""
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
     dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
