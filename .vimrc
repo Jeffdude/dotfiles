@@ -12,6 +12,8 @@ if has("mouse")
 endif
 
 set number
+set t_Co=256
+set background=dark
 set nocompatible
 set showcmd
 set laststatus=2
@@ -23,7 +25,7 @@ set incsearch
 set ruler
 set showmatch
 set scrolloff=5
-"set scrolljump=-10
+set scrolljump=-10
 "wildmenu
 set wildmenu
 set wildmode=list:longest,full
