@@ -35,7 +35,8 @@ set tabstop=4
 "do not expand tab for Makefiles
 autocmd FileType make set noexpandtab
 "html tabstop is smaller
-autocmd Filetype html setlocal ts=2 sw=2
+autocmd Filetype html setlocal tabstop=2|set shiftwidth=2
+autocmd Filetype htmldjango setlocal tabstop=2|set shiftwidth=2
 "treat wrapped lines as many lines when scrolling
 map j gj
 map k gk
