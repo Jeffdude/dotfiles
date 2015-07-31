@@ -39,7 +39,7 @@ setopt pushdignoredups
 setopt pushdminus
 
 # Set proper variables
-export TERM='xterm-256color'
+export TERM='screen-256color'
 
 # Zsh vi mode
 # doublack.io/words/zsh-vi-mode.html

@@ -12,6 +12,8 @@ if has("mouse")
 endif
 
 set number
+set t_Co=256
+set background=dark
 set nocompatible
 set showcmd
 set laststatus=2
@@ -23,8 +25,7 @@ set incsearch
 set ruler
 set showmatch
 set scrolloff=5
-set scrolljump=-10
-"wildmenu
+"set scrolljump=-10
 set wildmenu
 set wildmode=list:longest,full
 "tabs be gone!
@@ -33,6 +34,9 @@ set shiftwidth=4
 set tabstop=4
 "do not expand tab for Makefiles
 autocmd FileType make set noexpandtab
+"html tabstop is smaller
+autocmd Filetype html setlocal tabstop=2|set shiftwidth=2
+autocmd Filetype htmldjango setlocal tabstop=2|set shiftwidth=2
 "treat wrapped lines as many lines when scrolling
 map j gj
 map k gk
