@@ -36,7 +36,13 @@ set tabstop=4
 autocmd FileType make set noexpandtab
 "html tabstop is smaller
 autocmd Filetype html setlocal tabstop=2|set shiftwidth=2
+autocmd Filetype html set nolinebreak 
 autocmd Filetype htmldjango setlocal tabstop=2|set shiftwidth=2
+autocmd Filetype htmldjango set tw=0 | set wm=0 
+"markdown
+autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd Filetype markdown set tw=0 |set wm=0 |set nolinebreak
+autocmd Filetype markdown setlocal tabstop=2|set shiftwidth=2
 "treat wrapped lines as many lines when scrolling
 map j gj
 map k gk
