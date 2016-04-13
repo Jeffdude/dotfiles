@@ -88,10 +88,29 @@ set autoread
 " like <leader>w saves the current file
 
 " let mapleader = ","
-" let g:mapleader = ","
+ let g:mapleader = "\<Space>"
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>s :w!<cr>
+
+" fill rest of line with characters
+function! FillLine( str )
+    " set tw to the desired total length
+    let tw = &textwidth
+    if tw==0 | let tw = 80 | endif
+    " strip trailing spaces first
+    .s/[[:space:]]*$//
+    " calculate total number of 'str's to insert
+    let reps = (tw - col("$")) / len(a:str)
+    " insert them, if there's room, removing trailing spaces (though forcing
+    " there to be one)
+    if reps > 0
+        .s/$/\=(' '.repeat(a:str, reps))/
+    endif
+endfunction
+
+map <leader>pp :set invpaste<cr>
+map <leader>fl :call FillLine( ' ' )<cr>
 
 " Pressing ,ss will toggle and untoggle spell checking
 set spelllang=en_us
