@@ -41,6 +41,9 @@ setopt pushdminus
 # Set proper variables
 export TERM='screen-256color'
 
+# Useful function
+up() { local p= i=${1:-1}; while ((i--)); do p+=../; done; cd "$p$2";}
+
 # Zsh vi mode
 # doublack.io/words/zsh-vi-mode.html
 bindkey -v
