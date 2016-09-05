@@ -11,10 +11,11 @@ zstyle :compinstall filename '/home/jeff/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+#locale=en_UTF8
 
 autoload -U promptinit
 autoload -U colors && colors
-promptinit
+#promptinit
 #prompt redhat
 PROMPT="%{$fg_bold[cyan]%}» %{$reset_color%}%b%{$fg[blue]%}%~ %{$reset_color%}
 [%n@%M]$ "
@@ -47,9 +48,10 @@ bindkey -v
 export KEYTIMEOUT=1
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
     zle reset-prompt
 }
+up() { local p= i=${1:-1}; while (( i-- )); do p+=../; done; cd "$p$2" }
 alias ls='ls --color=auto'
 alias ll='ls -lah'
 alias tt="tmux attach || tmux"

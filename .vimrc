@@ -68,7 +68,7 @@ command M make
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
-let g:airline_theme='murmur'
+let g:airline_powerlineish = 1
 Plugin 'tpope/vim-surround'
 Plugin 'myusuf3/numbers.vim'
 nnoremap <F3> :NumbersToggle<CR>
@@ -88,7 +88,7 @@ set autoread
 " like <leader>w saves the current file
 
 " let mapleader = ","
- let g:mapleader = "\<Space>"
+ let mapleader = "\<Space>"
 
 " Fast saving
 nmap <leader>s :w!<cr>
@@ -122,7 +122,7 @@ set textwidth=80
 set formatoptions+=t
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let ctrlp_map = '<c-p>'
+let ctrlp_cmd = 'CtrlP'
 call vundle#end()
 filetype plugin indent on
