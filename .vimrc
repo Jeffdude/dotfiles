@@ -6,7 +6,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call vundle#rc()
 
-
 if has("mouse")
     set mouse=a
 endif
@@ -54,6 +53,7 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 "colorscheme codeschool
+set visualbell
 
 "make it prettier
 hi Visual cterm=none ctermbg=Black ctermfg=White
