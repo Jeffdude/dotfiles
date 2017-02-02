@@ -1,0 +1,9 @@
+[Default Applications]
+application/x-extension-html=dwb.desktop
+application/x-extension-htm=dwb.desktop
+text/html=dwb.desktop
+
+[Added Associations]
+application/x-extension-html=dwb.desktop;
+application/x-extension-htm=dwb.desktop;
+text/html=dwb.desktop;
