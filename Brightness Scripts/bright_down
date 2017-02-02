@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cur_b=$(/usr/local/bin/bright)
+let cur_b=cur_b-$1
+sudo /usr/local/bin/bright $cur_b
