@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Ubuntu: placed in /etc/pm/sleep.d
+#  used to reset my network dhcp at every wake from sleep (lid open)
+
+case "$1" in
+    hibernate|suspend)
+        ;;
+    thaw|resume)
+        dhclient -r && dhclient wlp5s0b1
+        ;;
+    *)
+        ;;
+esac
+exit $?
