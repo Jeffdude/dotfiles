@@ -6,6 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call vundle#rc()
 
+
 if has("mouse")
     set mouse=a
 endif
@@ -23,7 +24,7 @@ set ignorecase
 set incsearch
 set ruler
 set showmatch
-set scrolloff=5
+"set scrolloff=5
 "set scrolljump=-10
 set wildmenu
 set wildmode=list:longest,full
@@ -53,7 +54,6 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 "colorscheme codeschool
-set visualbell
 
 "make it prettier
 hi Visual cterm=none ctermbg=Black ctermfg=White
@@ -92,6 +92,9 @@ set autoread
 
 " Fast saving
 nmap <leader>s :w!<cr>
+
+" Fast buffer switching
+nmap <leader>bb :b#<cr>
 
 " fill rest of line with characters
 function! FillLine( str )
