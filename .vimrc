@@ -114,6 +114,7 @@ endfunction
 
 map <leader>pp :set invpaste<cr>
 map <leader>fl :call FillLine( ' ' )<cr>
+map <leader>tt :make<cr>
 
 " Pressing ,ss will toggle and untoggle spell checking
 set spelllang=en_us
