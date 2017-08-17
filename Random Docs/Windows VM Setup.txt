@@ -1,0 +1,8 @@
+Windows host: 
+* configure NAT network settings with port forwarding 127.0.1.1:22 to guest_ip:22
+* export vbox=jeff@127.0.1.1
+* Install and run Xming
+
+Ubuntu guest: 
+* export DISPLAY=host_ip:0.0
+    - NOTE: host_ip was 10.0.2.2 the first time
