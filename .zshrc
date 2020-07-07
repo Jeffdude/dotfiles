@@ -15,10 +15,22 @@ compinit
 
 autoload -U promptinit
 autoload -U colors && colors
+
+function git_branch() {
+    branch=$(git symbolic-ref HEAD 2> /dev/null | awk 'BEGIN{FS="/"} {print $NF}')
+    if [[ $branch == "" ]]; then
+        :
+    else
+        echo ' (' $branch ') '
+    fi
+}
+ 
+setopt PROMPT_SUBST
+
 #promptinit
 #prompt redhat
-PROMPT="%{$fg_bold[cyan]%}» %{$reset_color%}%b%{$fg[blue]%}%~ %{$reset_color%}
-[%n@%M]$ "
+PROMPT="%{$fg_bold[cyan]%}» %{$reset_color%}%b%{$fg[blue]%}%~%{$reset_color%}
+[%n@atlas]$ "
 RPROMPT=""
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
@@ -28,6 +40,13 @@ fi
 chpwd() {
     print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
 }
+export PATH=/home/jeffm/bin:$PATH
+export PATH=/home/jeffm/WinHome/AppData/Local/Android/Sdk/platform-tools:$PATH
+export PATH=/home/jeffm/WinHome/AppData/Local/Android/Sdk/emulator:$PATH
+export PATH=./node_modules/.bin:$PATH
+export PATH='/cygdrive/c/Program Files (x86)/Yarn/bin':$PATH
+export ANDROID_SDK=/home/jeffm/WinHome/AppData/Local/Android/Sdk
+export ANDROID_HOME='C:/Users/jeffm/AppData/Local/Android/Sdk'
 
 DIRSTACKSIZE=20
 
@@ -72,3 +91,9 @@ alias clm='clear && make'
 alias cla='clear && archey'
 alias claf='clear && archey_full'
 alias venv='. env/bin/activate'
+
+alias start_android='adb start-server && emulator -avd Pixel_3_API_R'
+alias search='grep --exclude-dir=node_modules --exclude-dir=.expo -r'
+
+
+
