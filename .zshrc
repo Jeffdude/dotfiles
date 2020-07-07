@@ -95,5 +95,7 @@ alias venv='. env/bin/activate'
 alias start_android='adb start-server && emulator -avd Pixel_3_API_R'
 alias search='grep --exclude-dir=node_modules --exclude-dir=.expo -r'
 
+alias copy='putclip'
+alias paste='getclip'
 
 
