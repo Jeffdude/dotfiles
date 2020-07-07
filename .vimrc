@@ -11,6 +11,11 @@ if has("mouse")
     set mouse=a
 endif
 
+set noundofile
+set nobackup
+set nowritebackup
+set noswapfile
+set smartindent
 set number
 set t_Co=256
 set background=dark
@@ -66,13 +71,14 @@ command Q q
 command WQ wq
 command M make
 
+Plugin 'tpope/vim-obsession'
+
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 let g:airline_powerlineish = 1
 Plugin 'tpope/vim-surround'
-Plugin 'myusuf3/numbers.vim'
-nnoremap <F3> :NumbersToggle<CR>
-nnoremap <F4> :NumbersOnOff<CR>
+
+Plugin 'dense-analysis/ale'
 
 " Sets how many lines of history VIM has to remember
 set history=700
@@ -92,6 +98,9 @@ set autoread
 
 " Fast saving
 nmap <leader>s :w!<cr>
+
+nmap <C-w>" :sp<cr>
+nmap <C-w>% :vs<cr>
 
 " Fast buffer switching
 nmap <leader>bb :b#<cr>
@@ -114,11 +123,22 @@ endfunction
 
 map <leader>pp :set invpaste<cr>
 map <leader>fl :call FillLine( ' ' )<cr>
-map <leader>tt :make<cr>
+
+map <leader>t :tabnew %<cr>
+map <leader>k :tabn<cr>
+map <leader>K :tabm +1<cr>
+map <leader>j :tabp<cr>
+map <leader>J :tabm -1<cr>
+
+map <leader>c gg"*yG``
+
+Plugin 'vim-syntastic/syntastic'
 
 " Pressing ,ss will toggle and untoggle spell checking
 set spelllang=en_us
 map <leader>ss :setlocal spell!<cr>
+
+command Vs vs
 
 "80 character line break
 set linebreak
@@ -130,3 +150,25 @@ let ctrlp_map = '<c-p>'
 let ctrlp_cmd = 'CtrlP'
 call vundle#end()
 filetype plugin indent on
+
+command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
+function! s:RunShellCommand(cmdline)
+  echo a:cmdline
+  let expanded_cmdline = a:cmdline
+  for part in split(a:cmdline, ' ')
+     if part[0] =~ '\v[%#<]'
+        let expanded_part = fnameescape(expand(part))
+        let expanded_cmdline = substitute(expanded_cmdline, part, expanded_part, '')
+     endif
+  endfor
+  botright new
+  setlocal buftype=nofile bufhidden=wipe nobuflisted noswapfile nowrap
+  call setline(1, 'You entered:    ' . a:cmdline)
+  call setline(2, 'Expanded Form:  ' .expanded_cmdline)
+  call setline(3,substitute(getline(2),'.','=','g'))
+  execute '$read !'. expanded_cmdline
+  setlocal nomodifiable
+  1
+endfunction
+
+map <leader>l :Shell eslint .<cr>
