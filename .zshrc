@@ -45,6 +45,8 @@ export PATH=/home/jeffm/WinHome/AppData/Local/Android/Sdk/platform-tools:$PATH
 export PATH=/home/jeffm/WinHome/AppData/Local/Android/Sdk/emulator:$PATH
 export PATH=./node_modules/.bin:$PATH
 export PATH='/cygdrive/c/Program Files (x86)/Yarn/bin':$PATH
+export PATH='/cygdrive/c/Program Files/Java/jre1.8.0_251/bin':$PATH
+export NODE_PATH='/cygdrive/c/Users/jeffm/AppData/Roaming/npm/node_modules':$NODE_PATH
 export ANDROID_SDK=/home/jeffm/WinHome/AppData/Local/Android/Sdk
 export ANDROID_HOME='C:/Users/jeffm/AppData/Local/Android/Sdk'
 
@@ -92,10 +94,24 @@ alias cla='clear && archey'
 alias claf='clear && archey_full'
 alias venv='. env/bin/activate'
 
+# App Dev stuff
+
 alias start_android='adb start-server && emulator -avd Pixel_3_API_R'
 alias search='grep --exclude-dir=node_modules --exclude-dir=.expo -r'
 
+function adb_reverse_forevor() {
+    while true; 
+    do;
+        if [[ $(adb reverse --list | wc -l) -lt 2 ]]; 
+        then; 
+            echo Running \'adb reverse tcp:$1 tcp:$1\'...; 
+            adb reverse tcp:$1 tcp:$1;
+            echo Done.;
+        fi;
+        sleep 1;
+    done;
+}
+# windows stuff
 alias copy='putclip'
 alias paste='getclip'
-
 
