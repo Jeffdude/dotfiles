@@ -97,6 +97,7 @@ alias venv='. env/bin/activate'
 # App Dev stuff
 
 alias start_android='adb start-server && emulator -avd Pixel_3_API_R'
+alias start_android_cold='adb start-server && emulator -no-snapshot-load -avd Pixel_3_API_R'
 alias search='grep --exclude-dir=node_modules --exclude-dir=.expo -r'
 
 function adb_reverse_forevor() {
