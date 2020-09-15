@@ -30,7 +30,7 @@ setopt PROMPT_SUBST
 #promptinit
 #prompt redhat
 PROMPT="%{$fg_bold[cyan]%}» %{$reset_color%}%b%{$fg[blue]%}%~%{$reset_color%}
-[%n@atlas]$ "
+[%n@%m]$ "
 RPROMPT=""
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
